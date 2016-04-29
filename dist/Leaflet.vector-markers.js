@@ -3,11 +3,11 @@
     "use strict";
     L.VectorMarkers = {};
     L.VectorMarkers.version = "1.0.0";
-    L.VectorMarkers.MAP_PIN = 'M16,1 C7.7146,1 1,7.65636364 1,15.8648485 C1,24.0760606 16,51 16,51 C16,51 31,24.0760606 31,15.8648485 C31,7.65636364 24.2815,1 16,1 L16,1 Z';
+    L.VectorMarkers.MAP_PIN = 'M24 0c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z';
     L.VectorMarkers.Icon = L.Icon.extend({
       options: {
-        iconSize: [30, 50],
-        iconAnchor: [15, 50],
+        iconSize: [48, 48],
+        iconAnchor: [28, 48],
         popupAnchor: [2, -40],
         shadowAnchor: [7, 45],
         shadowSize: [54, 51],
@@ -19,7 +19,7 @@
         icon: "home",
         markerColor: "blue",
         iconColor: "white",
-        viewBox: '0 0 32 52'
+        viewBox: '0 0 48 48'
       },
       initialize: function(options) {
         return options = L.Util.setOptions(this, options);
