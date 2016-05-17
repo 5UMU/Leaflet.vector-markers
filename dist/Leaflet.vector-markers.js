@@ -16,21 +16,33 @@
         spinClass: "fa-spin",
         extraClasses: "",
         icon: "home",
-        markerColor: "blue",
+        markerColor: ["blue"],
         iconColor: "white"
       },
       initialize: function(options) {
         return options = L.Util.setOptions(this, options);
       },
       createIcon: function(oldIcon) {
-        var div, icon, options, pin_path;
+        var div, icon, options, pin_path, gradient_tag, colorList;
         div = (oldIcon && oldIcon.tagName === "DIV" ? oldIcon : document.createElement("div"));
         options = this.options;
         if (options.icon) {
           icon = this._createInner();
         }
         pin_path = L.VectorMarkers.MAP_PIN;
-        div.innerHTML = '<svg width="32px" height="52px" viewBox="0 0 32 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">' + '<path d="' + pin_path + '" fill="' + options.markerColor + '"></path>' + icon + '</svg>';
+		var uniqueID = window.performance.now();
+		gradient_tag = '<defs>' + '<linearGradient id="' + uniqueID + '" x1="0%" y1="0%" x2="0%" y2="100%">';
+		if (typeof options.markerColor != 'string') {
+			options.markerColor.forEach(function(color, index) {
+				var fraction = 1.00 / (options.markerColor.length > 1 ? (options.markerColor.length - 1) : 1) * index;
+				gradient_tag += '<stop offset="' + fraction + '" style="stop-color:' + color + ';stop-opacity:1"></stop>'
+			});
+		}
+		else {
+			gradient_tag += '<stop offset="0" style="stop-color:' + options.markerColor + ';stop-opacity:1"></stop>'
+		}
+		gradient_tag += '</linearGradient>' + '</defs>';
+        div.innerHTML = '<svg width="32px" height="52px" viewBox="0 0 32 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">' + gradient_tag + '<path d="' + pin_path + '" fill="url(#' + uniqueID + ')"></path>' + icon + '</svg>';
         this._setIconStyles(div, "icon");
         this._setIconStyles(div, "icon-" + options.markerColor);
         return div;
