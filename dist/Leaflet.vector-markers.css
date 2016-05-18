@@ -40,18 +40,17 @@ Version: 1.0
   .vector-marker {
     background-size: 720px 46px;
   }
-
-  .vector-marker-shadow {
-    background-size: 54px 51px;
-  }
   
   .vector-marker-shadow.pin {
     background-image: url("assets/shadow-pin@2x.png");
+    background-size: 54px 51px;
   }
   
   .vector-marker-shadow.star {
     background-image: url("assets/shadow-star@2x.png");
+    background-size: 54px 51px;
   }
+  
 }
 
 .vector-marker i {
