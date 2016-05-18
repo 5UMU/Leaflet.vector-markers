@@ -23,9 +23,16 @@ Version: 1.0
 }
 
 .vector-marker-shadow {
-  background: url("assets/shadow.png") no-repeat 0 0;
   width: 36px;
   height: 16px;
+}
+
+.vector-marker-shadow.pin {
+  background: url("assets/shadow-pin.png") no-repeat 0 0;
+}
+
+.vector-marker-shadow.star {
+  background: url("assets/shadow-star.png") no-repeat 0 0;
 }
 
 /* Retina displays */
@@ -35,19 +42,35 @@ Version: 1.0
   }
 
   .vector-marker-shadow {
-    background-image: url("assets/shadow@2x.png");
     background-size: 54px 51px;
   }
+  
+  .vector-marker-shadow.pin {
+    background-image: url("assets/shadow-pin@2x.png");
+  }
+  
+  .vector-marker-shadow.star {
+    background-image: url("assets/shadow-star@2x.png");
+  }
 }
+
 .vector-marker i {
   position: absolute;
-  top: 8px;
-  left: 0;
   width: 32px;
   color: #333;
   margin: auto;
   display: inline-block;
   font-size: 14px;
+}
+
+.vector-marker i.pin {
+  top: 8px;
+  left: 0;
+}
+
+.vector-marker i.star {
+  top: 17px;
+  left: 8px;
 }
 
 .vector-marker i.maki-icon {
