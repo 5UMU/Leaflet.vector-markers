@@ -1,7 +1,7 @@
 /*
 Author: Mathias Schneider
 License: MIT
-Version: 1.0
+Version: 0.0.3
 */
 /* Marker setup */
 .vector-marker {
@@ -14,7 +14,7 @@ Version: 1.0
   text-align: center;
 }
 .vector-marker path {
-  stroke: black;
+  stroke: white;
   stroke-opacity: 0.4;
   stroke-width: 1;
 }
@@ -41,9 +41,9 @@ Version: 1.0
 }
 .vector-marker i {
   position: absolute;
-  top: 8px;
+  top: 10px;
   left: 0;
-  width: 32px;
+  width: 48px;
   color: #333;
   margin: auto;
   display: inline-block;
