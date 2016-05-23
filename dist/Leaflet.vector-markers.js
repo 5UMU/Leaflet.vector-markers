@@ -4,6 +4,7 @@
     L.VectorMarkers = {};
     L.VectorMarkers.version = "1.0.0";
     L.VectorMarkers.MAP_PIN = 'M24 0c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z';
+	L.VectorMarkers.SQUARE_ROUNDED = 'M24-8c0 4.4-3.6 8-8 8h-32c-4.4 0-8-3.6-8-8v-32c0-4.4 3.6-8 8-8h32c4.4 0 8 3.6 8 8v32z';
     L.VectorMarkers.Icon = L.Icon.extend({
       options: {
         iconSize: [48, 48],
@@ -19,16 +20,27 @@
         icon: "home",
         markerColor: "blue",
         iconColor: "white",
-        viewBox: '0 0 48 48'
+        viewBox: '0 0 48 48',
+		path: L.VectorMarkers.MAP_PIN //default to map_pin path
       },
       initialize: function(options) {
         return options = L.Util.setOptions(this, options);
       },
-      createIcon: function(oldIcon) {
+      createIcon: function(oldIcon) { 
         var div, options, pin_path;
         div = (oldIcon && oldIcon.tagName === "DIV" ? oldIcon : document.createElement("div"));
         options = this.options;
-        pin_path = options.map_pin || L.VectorMarkers.MAP_PIN;
+        pin_path = options.path || L.VectorMarkers.MAP_PIN;
+		if (options.path == L.VectorMarkers.MAP_PIN){
+			options.viewBox = '0 0 48 48';
+		}
+		else if (options.path == L.VectorMarkers.SQUARE_ROUNDED){ //custom options for the square_rounded vector path
+			options.viewBox = '-24 -48 48 48';
+			options.iconSize = [40, 36];
+			options.iconAnchor = [28,36];
+			options.shadowSize = [50,30];
+			options.shadowAnchor = [15,30];
+		}
         div.innerHTML = '<svg width="' + options.iconSize[0] + 'px" height="' + options.iconSize[1] + 'px" viewBox="' + options.viewBox + '" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">' + '<path d="' + pin_path + '" fill="' + options.markerColor + '"></path>' + '</svg>';
         if (options.icon) {
           div.appendChild(this._createInner());
