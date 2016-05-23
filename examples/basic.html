@@ -25,16 +25,7 @@
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       detectRetina: true
     }).addTo(map);
-	
-	var customMarker = L.VectorMarkers.icon({
-		icon: "question",
-		markerColor: "purple",
-		iconColor: "yellow",
-		path: 'M24-8c0 4.4-3.6 8-8 8h-32c-4.4 0-8-3.6-8-8v-32c0-4.4 3.6-8 8-8h32c4.4 0 8 3.6 8 8v32z',
-		spin: true
-	});
 
-	L.marker([48.15491,11.55183], {icon: customMarker}).addTo(map);
     L.marker([48.15491,11.54183], {icon: L.VectorMarkers.icon({icon: 'spinner', prefix: 'fa', markerColor: '#cb4b16', spin: true}) }).addTo(map);
     L.marker([48.15391,11.53283], {icon: L.VectorMarkers.icon({icon: 'rocket', prefix: 'fa', markerColor: '#002b36', iconColor: '#eee8d5'}) }).addTo(map);
     L.marker([48.15391,11.52283], {icon: L.VectorMarkers.icon({icon: 'rocket', prefix: 'fa', markerColor: '#eee8d5', iconColor: '#002b36'}) }).addTo(map);
