@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sumu Assignment for Employment</title>
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="dist/Leaflet.vector-markers.css">
+        <link rel="stylesheet" href="http://cdn.Leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    </head>
+    <body>
+        <div id="map" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; width    : 100%; height: 100%"></div>
+        <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+        <script src="dist/Leaflet.vector-markers.js"></script> 
+        <script>
+            var map = L.map('map').setView([48.15491,11.54183], 14);
+
+            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contri    butors',
+                detectRetina: true
+            }).addTo(map);
+
+            var redMarker = L.VectorMarkers.icon({
+                icon: 'coffee',
+                markerColor: 'red'
+            });
+
+            L.marker([48.15491,11.55240], {icon: redMarker}).addTo(map);
+            L.marker([48.15491,11.54183], {icon: L.VectorMarkers.icon({icon: 'home', prefix    : 'fa', markerColor: '#0000FF', spin: true, iconColor: 'white', extraClasses: 'fa-rotate90'}) }).addTo(map);
+        </script>
+    </body>
+</html>
+
